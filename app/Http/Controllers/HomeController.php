@@ -94,4 +94,10 @@ class HomeController extends Controller
         return view('m_groups')
             ->with('_groups', $_groups);
     }
+
+    public function join(Request $request){
+        
+
+        return back();
+    }
 }

@@ -27,5 +27,10 @@ class Group extends Model
          * This is going to fetch the group details, can also add fetching the 
          * users in the group from the userGroup table
          */
+        
+         $group = DB::table('groups')
+            ->where('id', $id)
+            ->get();
+         return $group;
     }
 }

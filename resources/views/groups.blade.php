@@ -21,7 +21,11 @@
                         </div>
                         <p class="text-black">{{ $item->group_name }}</p>
                         <div class="wrapper w-50 mt-4">
-                            <a href="{{ url('/m_groups') }}" class="btn btn-xs btn-primary">
+                            <form action="{{ url('/join_group') }}" method="post">
+                                @csrf
+                                <input type="hidden" value="{{ $item->id }}">
+                            </form>
+                            <a href="{{ url('/join_group/'.$item->id) }}" class="btn btn-xs btn-primary">
                                 Join </a>
                         </div>
                     </div>

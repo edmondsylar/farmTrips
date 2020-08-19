@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Group;
 
 
 /*
@@ -27,6 +28,16 @@ Route::get('/roles', 'HomeController@roles')->name('roles');
 Route::get('/m_groups', 'HomeController@m_groups')->name('m_groups');
 Route::post('/complete_reg', 'HomeController@complete_reg');
 Route::resource('/groups', 'GroupsController');
+
+//Joining a group View
+Route::get('/join_group/{id}', function($id){
+    $_ = new Group;
+    $group = $_->group($id);
+
+    // return $group;
+    return view('group_join')
+        ->with('group', $group);
+});
 
 Route::get('/create_group', function () {
 
