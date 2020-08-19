@@ -17,6 +17,11 @@ class GroupsController extends Controller
     public function index()
     {
         //
+        $_ = new Group;
+        $groups = $_->groups();
+
+        return view('groups')
+            ->with('groups', $groups);
     }
 
     /**
@@ -27,6 +32,7 @@ class GroupsController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**

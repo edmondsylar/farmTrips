@@ -85,12 +85,13 @@ class HomeController extends Controller
             $_gp = Group::find('id', $value['group'])->get();
             array_push($groups, $_gp);
 
-        }
-        
-        
+        }        
         // return $groups;
 
-        
-        return view('m_groups');
+        //Groups you have created
+        $_ = new Group; 
+        $_groups = $_->getPersonal();
+        return view('m_groups')
+            ->with('_groups', $_groups);
     }
 }
