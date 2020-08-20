@@ -16,9 +16,7 @@ class CreateUserGroupsTable extends Migration
         Schema::create('user_groups', function (Blueprint $table) {
             $table->id();
             $table->string('user');
-            $table->string('destination')->nullable();
             $table->string('group');
-            $table->string('price')->nullable();
             $table->timestamps();
         });
     }

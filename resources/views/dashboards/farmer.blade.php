@@ -18,12 +18,13 @@
     <div class="grid">
       <div class="grid-body text-gray">
         <div class="d-flex justify-content-between">
-          <p>3</p>
+          <p>{{ count($userGroups) }}</p>
           <p>...</p>
         </div>
-        <p class="text-black">Trips</p>
+        <p class="text-black">Group(s) Attended</p>
         <div class="wrapper w-50 mt-4">
-          <canvas height="45" id="stat-line_2"></canvas>
+        <a href="{{ url('/m_groups') }}" class="btn btn-xs btn-primary">
+            Review </a>
         </div>
       </div>
     </div>
@@ -32,10 +33,10 @@
     <div class="grid">
       <div class="grid-body text-gray">
         <div class="d-flex justify-content-between">
-          <p>0 shs</p>
+          <p>Trips Completed</p>
           <p>...</p>
         </div>
-        <p class="text-black">Account </p>
+        <p class="text-black"> Account </p>
         <div class="wrapper w-50 mt-4">
           <canvas height="45" id="stat-line_3"></canvas>
         </div>
@@ -76,10 +77,10 @@
                             {{ $item->Manager }}
                         </td>
                         <td> 
-                            @if (!$item->destination)
+                            @if (!$item->status)
                                 Open Discusion
                             @else
-                                {{ $item->destination }}
+                                {{ $item->status }}
                             @endif
                         </td>
                         </tr>
@@ -89,8 +90,10 @@
         </tbody>
         </table>
       </div>
-      <a class="border-top px-3 py-2 d-block text-gray" href="#">
-        <small class="font-weight-medium"><i class="mdi mdi-chevron-down mr-2"></i>View All Order History</small>
+      <a class="border-top px-3 py-2 d-block text-gray" href="{{ url('/groups') }}">
+        <small class="font-weight-medium"><i class="mdi mdi-chevron-down mr-2"></i>
+            View All
+        </small>
       </a>
     </div>
   </div>

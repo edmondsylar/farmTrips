@@ -64,7 +64,7 @@
                    <select name="role" class="form-control" id="">
                        <option value="" selected disabled> Select Role</option>
                        @foreach ($roles as $role)
-                            <option value="{{ $role }}" selected> {{ $role }}</option>
+                            <option value="{{ $role }}" style="text-tranform: capitalize;" selected> {{ $role }}</option>
                        @endforeach
                    </select>
                 </div>

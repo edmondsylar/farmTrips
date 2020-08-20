@@ -32,15 +32,19 @@ class HomeController extends Controller
             return redirect('/roles');
         }
         $role = Auth::user()->role;
+        $_ = new userGroups;
+        $userGroups = $_->userGroups();
 
         $gps = new Group;
         $myGroups = $gps->getPersonal();
         $groups = $gps->groups();
-
+         
+        // return $userGroups;
         return view('home')
             ->with('groups', $groups)
             ->with('myGroups', $myGroups)
-            ->with('role', $role);
+            ->with('role', $role)
+            ->with('userGroups', $userGroups);
     }
 
     public function roles(){
@@ -76,13 +80,15 @@ class HomeController extends Controller
     }
 
     public function m_groups(){
+
+
         //user to help us get all groups that this farmer belongs to.
         $user = Auth::user()->email;
         //we are going to store the groups and there details in this array
         $groups = array();
         $_ug = userGroups::orderBy('id', 'desc')->where('user', $user)->get();
         foreach ($_ug as $key => $value) {
-            $_gp = Group::find('id', $value['group'])->get();
+            $_gp = Group::where('id', $value['group'])->get();
             array_push($groups, $_gp);
 
         }        
@@ -97,6 +103,10 @@ class HomeController extends Controller
 
     public function join(Request $request){
         
+        $create = new userGroups;
+        $create->user = Auth::user()->email;
+        $create->group = $request->input('group');
+        $create->save();
 
         return back();
     }

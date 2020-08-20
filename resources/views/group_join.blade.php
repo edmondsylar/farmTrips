@@ -8,7 +8,7 @@
         </div>
     </div>
 <div class="row">
-    <div class="col-lg-5 col-md-6 col-sm-12 equel-grid">
+    <div class="col-lg-6 equel-grid">
         <div class="grid">
         <div class="grid-body">
             <div class="split-header">
@@ -21,6 +21,7 @@
             <h3>{{ $group[0]->group_name }}</h3>
             <p class="ml-1 font-weight-bold"></p>
             </div>
+            <form style="width: ; position: ;" action="{{ url('/join') }}" method="post">
             <div class="d-flex mt-2">
             <div class="wrapper d-flex pr-4">
                 <small class="text-primary font-weight-medium mr-2">Paying</small>
@@ -37,8 +38,12 @@
             
             </div>
             <div class="d-flex flex-row mt-4 mb-4">
-            <button class="btn btn-danger text-white component-flat w-50 mr-2" type="button">Cancle</button>
-            <button class="btn btn-primary w-50 ml-2" type="button">Join</button>
+                @csrf
+                <a href="{{ url('/groups') }}" class="btn btn-danger text-white component-flat w-50 mr-2" type="button">Cancle</a>
+
+                <button type="submit" class="btn btn-primary w-50 ml-2" type="button">Join</button>
+                <input type="hidden" name="group" value="{{ $group[0]->id }}">
+            </form>
             </div>
             <div class="d-flex mt-5 mb-3">
             <small class="mb-0 text-primary">Stops</small>
@@ -54,8 +59,8 @@
         </div>
         </div>
     </div>
-
-<div class="col-lg-5 col-md-6 col-sm-12 equel-grid">
+@if($group[0]->admin == Auth::user()->email)
+<div class="col-lg-6 equel-grid">
     <div class="grid">
         <div class="grid-body">
             <div class="split-header">
@@ -73,8 +78,12 @@
                 {{-- we place a form here --}}
                 <form action="" method="post" class="form-group">
                     <div class="row">
-                        <input type="text" class="form-control col-sm-6" placeholder="">
-                        <input type="text" class="form-control col-sm-6" placeholder="price">
+                        <!-- <input type="text" class="form-control col-sm-6" placeholder=""> -->
+                        <select class="form-control col-sm-6" name="plate" id="none">
+                            <option value="" disabled selected>Select car</option>
+                            <option value="UAT 969V">UAT 969V</option>
+                        </select>
+                        <input type="text" class="form-control col-sm-6" placeholder="Price">
                     </div>
                 </form>
                 
@@ -94,6 +103,9 @@
         </div>
     </div>
 </div>
+
+@endif
+
 
 
 @endsection

@@ -13,7 +13,9 @@
     <div class="col-lg-6 equel-grid">
         <div class="grid">
             <p class="grid-header">
-                <span><b> Create Group</b></span>
+                <span>
+                  <b> Create Group</b>
+                </span>
                 <small>  
                     Please Note that the Group Name should be the Final Destination of the 
                     Trip
@@ -56,7 +58,10 @@
             @if (count($_groups) > 0)
                 @foreach ($_groups as $item)
                    <div class="activity-log">
-                        <p class="log-name">{{ $item->group_name }}</p>
+                        <p class="log-name">
+                        <a href="{{ url('/join_group/'.$item->id) }}">
+                          {{ $item->group_name }}</p>
+                        </a>
                         <div class="log-details">Created: {{ $item->created_at }}</div>
                         <small class="log-time">
 

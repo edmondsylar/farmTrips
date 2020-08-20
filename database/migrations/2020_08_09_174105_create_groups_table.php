@@ -19,7 +19,7 @@ class CreateGroupsTable extends Migration
             $table->string('group_name');
             $table->string('admin');
             $table->string('Manager');
-            $table->string('destination')->nullable();;
+            $table->string('status')->default('Open');  
             $table->string('car')->nullable();;
             $table->string('price')->nullable();
             $table->timestamps();
