@@ -28,6 +28,7 @@ Route::get('/roles', 'HomeController@roles')->name('roles');
 Route::get('/m_groups', 'HomeController@m_groups')->name('m_groups');
 Route::post('/complete_reg', 'HomeController@complete_reg');
 Route::resource('/groups', 'GroupsController'); 
+Route::resource('/cars', 'CarsController'); 
 Route::post('/join', 'HomeController@join');
 
 //Joining a group View

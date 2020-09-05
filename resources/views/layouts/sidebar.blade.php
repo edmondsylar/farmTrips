@@ -26,6 +26,7 @@
         <i class="mdi mdi-gauge link-icon"></i>
       </a>
     </li>
+
     <li>
       <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
         <span class="link-title">Groups</span>
@@ -38,8 +39,27 @@
         <li>
         <a href="{{ url('/groups') }}">All Groups</a>
         </li>
+        
       </ul>
     </li>
+
+    <li>
+      <a href="#sample-cars" data-toggle="collapse" aria-expanded="false">
+        <span class="link-title">Cars</span>
+        <i class="mdi mdi-car link-icon"></i>
+      </a>
+      <ul class="collapse navigation-submenu" id="sample-cars">
+        <li>
+        <a href="{{ url('/cars') }}">My Cars</a>
+        </li>
+        <li>
+        <a href="{{ url('/groups') }}">Destinations</a>
+        </li>
+        
+      </ul>
+    </li>
+
+
     {{-- <li>
       <a href="#ui-elements" data-toggle="collapse" aria-expanded="false">
         <span class="link-title">UI Elements</span>
@@ -58,7 +78,7 @@
       </ul>
     </li> --}}
     <li>
-      <a href="pages/forms/form-elements.html">
+      <a href="{{ url('#') }}">
         <span class="link-title">My Account</span>
         <i class="mdi mdi-clipboard-outline link-icon"></i>
       </a>

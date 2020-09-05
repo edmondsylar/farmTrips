@@ -361,7 +361,9 @@ footer {
 
 /* Layout */
 .page-body {
-  background: #fff; }
+  /* background: #fff; */
+  background: whitesmoke;
+ }
 
 .page-content-wrapper {
   background: #fbfcfd;

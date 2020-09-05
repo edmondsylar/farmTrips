@@ -77,11 +77,11 @@
                             {{ $item->Manager }}
                         </td>
                         <td> 
-                            @if (!$item->status)
+                            {{-- @if (!$item->status)
                                 Open Discusion
                             @else
                                 {{ $item->status }}
-                            @endif
+                            @endif --}}
                         </td>
                         </tr>
                 @endforeach
