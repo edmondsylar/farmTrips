@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Group;
 use App\userGroups;
+use App\Car;
 
 class HomeController extends Controller
 {
@@ -92,12 +93,16 @@ class HomeController extends Controller
             array_push($groups, $_gp);
 
         }        
-        // return $groups;
+        /**
+         * Lets also get cars you have created
+         */
+        $cars = Car::orderBy('id', 'desc')->where('owner', $user)->get();
 
         //Groups you have created
         $_ = new Group; 
         $_groups = $_->getPersonal();
         return view('m_groups')
+            ->with('cars', $cars)
             ->with('_groups', $_groups);
     }
 

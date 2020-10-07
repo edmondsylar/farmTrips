@@ -33,10 +33,10 @@ Route::post('/join', 'HomeController@join');
 
 //Joining a group View
 Route::get('/join_group/{id}', function($id){
-    $_ = new Group;
-    $group = $_->group($id);
+    
+    $group = Group::find($id);
 
-    // return $group;
+    return $group;
     return view('group_join')
         ->with('group', $group);
 });

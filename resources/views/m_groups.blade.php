@@ -28,7 +28,24 @@
             <form action="{{ url('/groups') }}" method="POST">
                 @csrf
             <div class="form-group">
+                <label for="group_name"> Group Name </label>
                 <input type="text" placeholder="Group Name" name="group_name" class="form-control">
+                
+                <label for="group_name"> Destination </label>
+                <input type="text" placeholder="Destination" name="destination" class="form-control">
+
+                <label for="group_name"> Car </label>
+                <select name="car" class="form-control" id="">
+                  <option value="" disabled selected>Select Car</option>
+                  @if(count($cars) > 0)
+                    @foreach($cars as $car)
+                      <option value="{{ $car->number_plate }}"> {{ $car->number_plate. " ". $car->type  }} </option>
+                    @endforeach
+                  @else
+                    <option value="" disabled>You have no Cars yet</option>
+                  @endif
+                </select>
+
             </div>
                 <button type="submit" class="btn btn-sm btn-primary">Create</button>
             </form>
@@ -70,6 +87,9 @@
                     </div>
                 @endforeach
                 {{ $_groups->links() }}
+
+                @else 
+                    You haven't created any groups yet.
             @endif
             
           
@@ -82,6 +102,33 @@
     </div>
   </div>
     </div>
-    {{-- @endif --}}
+<div class="col-lg-12">
+    <div class="grid">
+        <p class="grid-header">Groups and Destinations.</p>
+        <div class="item-wrapper">
+        <div class="table-responsive">
+            <table class="table info-table">
+            <thead>
+                <tr>
+                <th>Group</th>
+                <th>Car</th>
+                <th>Destination</th>
+                <th>Date</th>
+                <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-success">
+                    <td>Water Bottle</td>
+                    <td>874</td>
+                    <td>$546</td>
+                    <td>43%</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+  </div>
     
 @endsection

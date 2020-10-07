@@ -3,8 +3,8 @@
 @section('content')
     <div class="row">
         <div class="col-12 py-5">
-            <h4>{{ $group[0]->group_name }}</h4>
-            <p class="text-gray">{{--<span style="text-transform: capitalize">{{ $role }}</span>--}} Join This Group</p>
+            <h4>{{ $group->group_name }}</h4>
+            <p class="text-gray">Destination: {{ $group[0] }}</p>
         </div>
     </div>
 <div class="row">
