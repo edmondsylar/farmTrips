@@ -1,12 +1,19 @@
+@php
+    use App\User;
+    use App\Car;
+
+    $farmers = User::where('role', 'farmer')->get();
+    $cars = Car::orderBy('id', 'desc')->get();
+
+@endphp
 <div class="row">
   <div class="col-md-3 col-sm-6 col-6 equel-grid">
     <div class="grid">
       <div class="grid-body text-gray">
         <div class="d-flex justify-content-between">
-          <p>30%</p>
-          <p>+06.2%</p>
+          <p>{{ count($farmers) }}</p>
         </div>
-        <p class="text-black">Traffic</p>
+        <p class="text-black">Farmers</p>
         <div class="wrapper w-50 mt-4">
           <canvas height="45" id="stat-line_1"></canvas>
         </div>
@@ -17,10 +24,9 @@
     <div class="grid">
       <div class="grid-body text-gray">
         <div class="d-flex justify-content-between">
-          <p>43%</p>
-          <p>+15.7%</p>
+          <p>{{ count($cars) }}</p>
         </div>
-        <p class="text-black">Conversion</p>
+        <p class="text-black">cars</p>
         <div class="wrapper w-50 mt-4">
           <canvas height="45" id="stat-line_2"></canvas>
         </div>
@@ -31,10 +37,9 @@
     <div class="grid">
       <div class="grid-body text-gray">
         <div class="d-flex justify-content-between">
-          <p>23%</p>
-          <p>+02.7%</p>
+          <p>0</p>
         </div>
-        <p class="text-black">Bounce Rate</p>
+        <p class="text-black">Trips</p>
         <div class="wrapper w-50 mt-4">
           <canvas height="45" id="stat-line_3"></canvas>
         </div>
@@ -45,10 +50,9 @@
     <div class="grid">
       <div class="grid-body text-gray">
         <div class="d-flex justify-content-between">
-          <p>75%</p>
-          <p>- 53.34%</p>
+          <p>0</p>
         </div>
-        <p class="text-black">Marketing</p>
+        <p class="text-black">Spares</p>
         <div class="wrapper w-50 mt-4">
           <canvas height="45" id="stat-line_4"></canvas>
         </div>
@@ -56,7 +60,7 @@
     </div>
   </div>
   <div class="col-lg-4 col-md-6 equel-grid">
-    <div class="grid">
+    {{-- <div class="grid">
       <div class="grid-body d-flex flex-column h-100">
         <div class="wrapper">
           <div class="d-flex justify-content-between">
@@ -78,9 +82,9 @@
           <canvas class="curved-mode" id="followers-bar-chart" height="220"></canvas>
         </div>
       </div>
-    </div>
+    </div> --}}
   </div>
-  <div class="col-lg-4 col-md-6 equel-grid">
+  {{-- <div class="col-lg-4 col-md-6 equel-grid">
     <div class="grid">
       <div class="grid-body">
         <p class="card-title">Campaign</p>
@@ -89,73 +93,43 @@
         <p class="text-center text-muted">Used balance this billing cycle</p>
       </div>
     </div>
-  </div>
-  <div class="col-lg-4 col-md-6 equel-grid">
+  </div> --}}
+  <div class="col-lg-8 col-md-8 equel-grid">
     <div class="grid table-responsive">
       <table class="table table-stretched">
         <thead>
           <tr>
-            <th>Symbol</th>
-            <th>Price</th>
-            <th>Change</th>
+            <th>Car</th>
+            <th>Plate</th>
+            <th>Owner</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <p class="mb-n1 font-weight-medium">AAPL</p>
-              <small class="text-gray">Apple Inc.</small>
-            </td>
-            <td class="font-weight-medium">198.18</td>
-            <td class="text-danger font-weight-medium">
-              <div class="badge badge-success">-1.39%</div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p class="mb-n1 font-weight-medium">NKE</p>
-              <small class="text-gray">Nike,Inc.</small>
-            </td>
-            <td class="font-weight-medium">03.95</td>
-            <td class="text-danger font-weight-medium">
-              <div class="badge badge-danger">-1.17%</div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p class="mb-n1 font-weight-medium">NSEI</p>
-              <small class="text-gray">Nifty 50</small>
-            </td>
-            <td class="font-weight-medium">11,278</td>
-            <td class="text-danger font-weight-medium">
-              <div class="badge badge-success">-0.24%</div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p class="mb-n1 font-weight-medium">BA</p>
-              <small class="text-gray">The Boeing Company</small>
-            </td>
-            <td class="font-weight-medium">354.67</td>
-            <td class="text-success font-weight-medium">
-              <div class="badge badge-success">+0.15%</div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p class="mb-n1 font-weight-medium">SBUX</p>
-              <small class="text-gray">Starbucks Corporation</small>
-            </td>
-            <td class="font-weight-medium">08.42</td>
-            <td class="text-success font-weight-medium">
-              <div class="badge badge-success">+0.67%</div>
-            </td>
-          </tr>
+          @if (count($cars) > 0)
+            @foreach($cars as $car)
+              <tr>
+                <td>
+                  <p class="mb-n1 font-weight-medium">{{ $car->type }}</p>
+                  {{-- <small class="text-gray">Apple Inc.</small> --}}
+                </td>
+                <td class="font-weight-medium">{{ $car->number_plate }}</td>
+                <td class="text-danger font-weight-medium">
+                  <div class="badge badge-success">{{ $car->owner }}</div>
+                </td>
+              </tr>
+            @endforeach   
+
+          @else
+            You Currently Have no cars in the system
+          @endif
+             
+          
+         
         </tbody>
       </table>
     </div>
   </div>
-  <div class="col-lg-5 col-md-6 col-sm-12 equel-grid">
+  {{-- <div class="col-lg-5 col-md-6 col-sm-12 equel-grid">
     <div class="grid">
       <div class="grid-body">
         <div class="split-header">
@@ -368,5 +342,5 @@
         <small class="font-weight-medium"><i class="mdi mdi-chevron-down mr-2"></i> View All </small>
       </a>
     </div>
-  </div>
+  </div> --}}
 </div>

@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="row">
         <div class="col-12 py-5">
@@ -103,6 +102,11 @@
   </div>
     </div>
 <div class="col-lg-12">
+  @php
+      use App\Group;
+      $g = new Group;
+      $groups = $g->groups();
+  @endphp
     <div class="grid">
         <p class="grid-header">Groups and Destinations.</p>
         <div class="item-wrapper">
@@ -118,12 +122,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-success">
-                    <td>Water Bottle</td>
-                    <td>874</td>
-                    <td>$546</td>
-                    <td>43%</td>
-                </tr>
+              @if (count($groups) > 0)
+                @foreach ($groups as $group)
+                    <tr class="bg-success">
+                      <td>{{ $group->group_name }}</td>
+                      <td>{{ $group->car }}</td>
+                      <td>{{ $group->destination }}</td>
+                      <td>{{ $group->created_at }}</td>
+                  </tr>
+                @endforeach
+                
+                @else
+                  You Have no groups
+              @endif
+                
             </tbody>
             </table>
         </div>

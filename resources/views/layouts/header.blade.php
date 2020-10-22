@@ -68,39 +68,10 @@
           <div class="dropdown-menu navbar-dropdown dropdown-menu-right" aria-labelledby="messageDropdown">
             <div class="dropdown-header">
               <h6 class="dropdown-title">Messages</h6>
-              <p class="dropdown-title-text">You have 4 unread messages</p>
+              <p class="dropdown-title-text">You have 0 unread messages</p>
             </div>
             <div class="dropdown-body">
-              <div class="dropdown-list">
-                <div class="image-wrapper">
-                  <img class="profile-img" src="assets/images/profile/male/image_1.png" alt="profile image">
-                  <div class="status-indicator rounded-indicator bg-success"></div>
-                </div>
-                <div class="content-wrapper">
-                  <small class="name">Clifford Gordon</small>
-                  <small class="content-text">Lorem ipsum dolor sit amet.</small>
-                </div>
-              </div>
-              <div class="dropdown-list">
-                <div class="image-wrapper">
-                  <img class="profile-img" src="assets/images/profile/female/image_2.png" alt="profile image">
-                  <div class="status-indicator rounded-indicator bg-success"></div>
-                </div>
-                <div class="content-wrapper">
-                  <small class="name">Rachel Doyle</small>
-                  <small class="content-text">Lorem ipsum dolor sit amet.</small>
-                </div>
-              </div>
-              <div class="dropdown-list">
-                <div class="image-wrapper">
-                  <img class="profile-img" src="assets/images/profile/male/image_3.png" alt="profile image">
-                  <div class="status-indicator rounded-indicator bg-warning"></div>
-                </div>
-                <div class="content-wrapper">
-                  <small class="name">Lewis Guzman</small>
-                  <small class="content-text">Lorem ipsum dolor sit amet.</small>
-                </div>
-              </div>
+              {{-- message and notifications can come here. --}}
             </div>
             <div class="dropdown-footer">
               <a href="#">View All</a>
@@ -114,24 +85,12 @@
           <div class="dropdown-menu navbar-dropdown dropdown-menu-right" aria-labelledby="appsDropdown">
             <div class="dropdown-header">
               <h6 class="dropdown-title">Apps</h6>
-              <p class="dropdown-title-text mt-2">Authentication required for 3 apps</p>
+              <p class="dropdown-title-text mt-2">Authenticate with other Apps</p>
             </div>
             <div class="dropdown-body border-top pt-0">
               <a class="dropdown-grid">
                 <i class="grid-icon mdi mdi-gmail mdi-2x"></i>
-                <span class="grid-tittle">Gmail</span>
-              </a>
-              <a class="dropdown-grid">
-                <i class="grid-icon mdi mdi-trello mdi-2x"></i>
-                <span class="grid-tittle">Trello</span>
-              </a>
-              <a class="dropdown-grid">
-                <i class="grid-icon mdi mdi-artstation mdi-2x"></i>
-                <span class="grid-tittle">Artstation</span>
-              </a>
-              <a class="dropdown-grid">
-                <i class="grid-icon mdi mdi-bitbucket mdi-2x"></i>
-                <span class="grid-tittle">Bitbucket</span>
+                <span class="grid-tittle">Google</span>
               </a>
             </div>
             <div class="dropdown-footer">
