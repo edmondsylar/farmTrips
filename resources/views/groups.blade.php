@@ -26,7 +26,7 @@
                                 <input type="hidden" value="{{ $item->id }}">
                             </form>
                             <a href="{{ url('/join_group/'.$item->id) }}" class="btn btn-xs btn-primary">
-                                Join </a>
+                                More </a>
                         </div>
                     </div>
                 </div>

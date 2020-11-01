@@ -55,7 +55,6 @@ class HomeController extends Controller
         $roles = [
             'driver',
             'farmer',
-            'user', //this user role will be taken on by a perfon who wants to rent out cars
         ];
 
         $check = DB::table('users')->where('role', 'admin')->get();

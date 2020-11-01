@@ -1,21 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\userGroups;
-use App\Group;
+use App\Trips;
 
-
-class GroupsController extends Controller
+class TripsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -24,14 +21,13 @@ class GroupsController extends Controller
     public function index()
     {
         //
-        $_ = new Group;
-        $groups = $_->groups();
+        $g = userGroups::where('user', Auth::user()->email)->get();
+        $trips = array();
+        
+        // foreach()
 
-        // $personalGroups = Group::where('user', Auth::user()->email)->get();
-
-
-        return view('groups')
-            ->with('groups', $groups);
+        return $g;
+        return view('trips');
     }
 
     /**
@@ -42,7 +38,6 @@ class GroupsController extends Controller
     public function create()
     {
         //
-        
     }
 
     /**
@@ -53,25 +48,21 @@ class GroupsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $_create = new Group;
-        $_create->group_name = $request->input('group_name');
-        $_create->destination = $request->input('destination');
-        $_create->car = $request->input('car');
-        $_create->admin = Auth::user()->email;
-        $_create->Manager = Auth::user()->name;
-        $_create->save();
+        /**
+         * Lets create a trip here.
+         */
 
+        $trip = new Trips;
+        $trip->group_id = $request->input('group');
+        $trip->destination = $request->input('destination');
+        $trip->car = $request->input('car');
+        $trip->note = $request->innput('note');
 
+        if ($trip->save()){
+            return view('trips');
+        }
 
-        $uGrp = new userGroups;
-        $uGrp->user = Auth::user()->email;
-        $uGrp->group = $_create->id;
-        if ($uGrp->save()){
-            return back();
-        };
-
-
+        // return view('trips');
     }
 
     /**
@@ -105,7 +96,9 @@ class GroupsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        /**
+         * Lets create a trip here
+         */
     }
 
     /**

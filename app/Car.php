@@ -21,4 +21,14 @@ class Car extends Model
 
         return 'Cars';
     }
+
+    public function myCars($user){
+        
+        //get all cars the person owns 
+        $cars = Cars::where('owner', $user)
+            ->paginate(10);
+        
+            return $cars;
+    }
+
 }

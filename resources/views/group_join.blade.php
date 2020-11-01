@@ -1,3 +1,10 @@
+@php
+    use App\userGroups;
+    // ini_set('memory_limit', '-1');
+    $users = userGroups::where('group', $group->id)->get();
+    // return print_r($users);
+@endphp
+
 @extends('layouts.app')
 
 @section('content')
@@ -18,31 +25,31 @@
             </span>
             </div>
             <div class="d-flex align-items-end mt-2">
-            <h3>{{ $group[0]->group_name }}</h3>
+            <h3>{{ $group->group_name }}</h3>
             <p class="ml-1 font-weight-bold"></p>
             </div>
             <form style="width: ; position: ;" action="{{ url('/join') }}" method="post">
             <div class="d-flex mt-2">
             <div class="wrapper d-flex pr-4">
-                <small class="text-primary font-weight-medium mr-2">Paying</small>
-                <small class="text-gray">Tomorrow</small>
+                <small class="text-primary font-weight-medium mr-2">Destination</small>
+            <small class="text-gray">{{ $group->destination }}</small>
             </div>
             <div class="wrapper d-flex pr-4">
-                <small class="text-primary font-weight-medium mr-2">Leaving</small>
-                <small class="text-gray">Tomorrow</small>
+                <small class="text-primary font-weight-medium mr-2">car</small>
+                <small class="text-gray">{{ $group->car }}</small>
             </div>
             <div class="wrapper d-flex">
                 <small class="text-primary font-weight-medium mr-2">Memebers:</small>
-                <small class="text-gray">10</small>
+                <small class="text-gray">{{ count($users) }}</small>
             </div>
             
             </div>
             <div class="d-flex flex-row mt-4 mb-4">
                 @csrf
-                <a href="{{ url('/groups') }}" class="btn btn-danger text-white component-flat w-50 mr-2" type="button">Cancle</a>
+                <a href="{{ url('/groups') }}" class="btn btn-danger text-white component-flat w-50 mr-2" type="button">Delete</a>
 
                 <button type="submit" class="btn btn-primary w-50 ml-2" type="button">Join</button>
-                <input type="hidden" name="group" value="{{ $group[0]->id }}">
+                <input type="hidden" name="group" value="{{ $group->id }}">
             </form>
             </div>
             <div class="d-flex mt-5 mb-3">
@@ -59,7 +66,7 @@
         </div>
         </div>
     </div>
-@if($group[0]->admin == Auth::user()->email)
+@if($group->admin == Auth::user()->email)
 <div class="col-lg-6 equel-grid">
     <div class="grid">
         <div class="grid-body">
@@ -70,34 +77,28 @@
             </span>
             </div>
             <div class="d-flex align-items-end mt-2">
-            <h3>Complete Trip</h3>
+            <h3>Start Trip</h3>
             <p class="ml-1 font-weight-bold"></p>
             </div>
             
             <div class="d-flex flex-row mt-4 mb-4">
                 {{-- we place a form here --}}
-                <form action="" method="post" class="form-group">
+                <form action="/trips" method="post" class="form-group">
+                    @csrf
                     <div class="row">
-                        <!-- <input type="text" class="form-control col-sm-6" placeholder=""> -->
-                        <select class="form-control col-sm-6" name="plate" id="none">
-                            <option value="" disabled selected>Select car</option>
-                            <option value="UAT 969V">UAT 969V</option>
-                        </select>
-                        <input type="text" class="form-control col-sm-6" placeholder="Price">
+                        <input type="hidden" name="group" id="group" value="{{ $group->id }}">
+                        <input type="hidden" name="destination" id="destination" value="{{ $group->destination }}">
+                        <input type="hidden" name="car" id="car" value="{{ $group->car }}">
+                        <label for="note">Enter Note</label> 
+                        <textarea name="" id="" cols="30" placeholder="Optional Trip Notes" rows="10" class="form-control"></textarea>
                     </div>
-                </form>
+               
                 
             </div>
-            <div class="d-flex mt-5 mb-3">
-                <small class="mb-0 text-primary">Farm Trips</small>
-            </div>
-
-        
             <div class="d-flex justify-content-between pt-2">
-                <button class="btn btn-danger text-white component-flat w-50 mr-2" type="button">Cancle</button>
-                <button class="btn btn-primary w-50 ml-2" type="button">Join</button>
+                <button class="btn btn-success w-50 ml-2" type="button">Start Strip</button>
             </div>
-
+        </form>
 
         </div>
         </div>

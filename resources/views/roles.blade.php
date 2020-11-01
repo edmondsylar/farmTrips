@@ -61,7 +61,7 @@
                     </p>
 
                 <div class="form-group">
-                   <select name="role" class="form-control" id="">
+                   <select style="text-transform: capitalize" name="role" class="form-control" id="">
                        <option value="" selected disabled> Select Role</option>
                        @foreach ($roles as $role)
                             <option value="{{ $role }}" style="text-tranform: capitalize;" selected> {{ $role }}</option>

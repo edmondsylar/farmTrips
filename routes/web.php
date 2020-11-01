@@ -31,12 +31,18 @@ Route::resource('/groups', 'GroupsController');
 Route::resource('/cars', 'CarsController'); 
 Route::post('/join', 'HomeController@join');
 
+Route::resource('/trips', 'TripsController');
+
 //Joining a group View
 Route::get('/join_group/{id}', function($id){
     
+    if(!Auth::user()){
+        return view('auth.login');
+    }
+
     $group = Group::find($id);
 
-    return $group;
+    // return $group;
     return view('group_join')
         ->with('group', $group);
 });

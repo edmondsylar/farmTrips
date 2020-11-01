@@ -2,36 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\userGroups;
-use App\Group;
 
-
-class GroupsController extends Controller
+class DriversController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     public function index()
     {
         //
-        $_ = new Group;
-        $groups = $_->groups();
-
-        // $personalGroups = Group::where('user', Auth::user()->email)->get();
-
-
-        return view('groups')
-            ->with('groups', $groups);
     }
 
     /**
@@ -42,7 +24,6 @@ class GroupsController extends Controller
     public function create()
     {
         //
-        
     }
 
     /**
@@ -54,24 +35,6 @@ class GroupsController extends Controller
     public function store(Request $request)
     {
         //
-        $_create = new Group;
-        $_create->group_name = $request->input('group_name');
-        $_create->destination = $request->input('destination');
-        $_create->car = $request->input('car');
-        $_create->admin = Auth::user()->email;
-        $_create->Manager = Auth::user()->name;
-        $_create->save();
-
-
-
-        $uGrp = new userGroups;
-        $uGrp->user = Auth::user()->email;
-        $uGrp->group = $_create->id;
-        if ($uGrp->save()){
-            return back();
-        };
-
-
     }
 
     /**

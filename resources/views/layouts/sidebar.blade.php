@@ -20,6 +20,10 @@
         </li>
     @else
 
+    @php
+        $role = Auth::user()->role;
+    @endphp
+        
     <li>
       <a href="{{ url('/') }}">
         <span class="link-title">Dashboard</span>
@@ -27,38 +31,80 @@
       </a>
     </li>
 
-    <li>
-      <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
-        <span class="link-title">Groups</span>
-        <i class="mdi mdi-flask link-icon"></i>
-      </a>
-      <ul class="collapse navigation-submenu" id="sample-pages">
-        <li>
-        <a href="{{ url('/m_groups') }}">My groups</a>
-        </li>
-        <li>
-        <a href="{{ url('/groups') }}">All Groups</a>
-        </li>
-        
-      </ul>
-    </li>
+    @switch($role)
+        @case('driver')
+            <li>
+              <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
+                <span class="link-title">Trips</span>
+                <i class="mdi mdi-flask link-icon"></i>
+              </a>
+                <ul class="collapse navigation-submenu" id="sample-pages">
+                  <li>
+                    <a href="{{ url('/trip/progress') }}">In Progress</a>
+                  </li>
+                  <li>
+                    <a href="{{ url('/trip/requests') }}">Requests</a>
+                  </li>
+                  <li>
+                    <a href="{{ url('/trip/history') }}">History</a>
+                  </li>
+                
+              </ul>
+            </li>
 
-    <li>
-      <a href="#sample-cars" data-toggle="collapse" aria-expanded="false">
-        <span class="link-title">Cars</span>
-        <i class="mdi mdi-car link-icon"></i>
-      </a>
-      <ul class="collapse navigation-submenu" id="sample-cars">
-        <li>
-        <a href="{{ url('/cars') }}">My Cars</a>
-        </li>
-        <li>
-        <a href="{{ url('/groups') }}">Destinations</a>
-        </li>
-        
-      </ul>
-    </li>
+            <li>
+              <a href="#sample-cars" data-toggle="collapse" aria-expanded="false">
+                <span class="link-title">Cars</span>
+                <i class="mdi mdi-car link-icon"></i>
+              </a>
+              <ul class="collapse navigation-submenu" id="sample-cars">
+                <li>
+                <a href="{{ url('/cars') }}">My Cars</a>
+                </li>
+                <li>
+                <a href="{{ url('/trips') }}">Trips</a>
+                </li>
+                
+              </ul>
+            </li>
 
+            @break
+        @case('farmer')
+        <li>
+          <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
+            <span class="link-title">Groups</span>
+            <i class="mdi mdi-flask link-icon"></i>
+          </a>
+          <ul class="collapse navigation-submenu" id="sample-pages">
+            <li>
+            <a href="{{ url('/m_groups') }}">My groups</a>
+            </li>
+            <li>
+            <a href="{{ url('/groups') }}">All Groups</a>
+            </li>
+            
+          </ul>
+        </li>
+    
+        <li>
+          <a href="#sample-cars" data-toggle="collapse" aria-expanded="false">
+            <span class="link-title">Cars</span>
+            <i class="mdi mdi-car link-icon"></i>
+          </a>
+          <ul class="collapse navigation-submenu" id="sample-cars">
+            <li>
+            <a href="{{ url('/cars') }}">My Cars</a>
+            </li>
+            <li>
+            <a href="{{ url('/trips') }}">Trips</a>
+            </li>
+            
+          </ul>
+        </li>
+            @break
+        @default
+            
+    @endswitch
 
     {{-- <li>
       <a href="#ui-elements" data-toggle="collapse" aria-expanded="false">
@@ -76,7 +122,7 @@
           <a href="pages/ui-components/typography.html">Typography</a>
         </li>
       </ul>
-    </li> --}}
+    </li> 
     <li>
       <a href="{{ url('#') }}">
         <span class="link-title">My Account</span>
@@ -92,6 +138,6 @@
         <i class="mdi mdi-asterisk link-icon"></i>
       </a>
     </li>
-  </ul>
+  </ul>--}}
   @endif
 </div>
