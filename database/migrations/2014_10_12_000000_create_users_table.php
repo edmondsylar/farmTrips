@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('role')->nullable();
             $table->timestamp('status')->nullable();
-            $table->number_format('trips')->nullable();
+            $table->bigInteger('trips')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
