@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\driverReequests;
 
 class DriversController extends Controller
 {
@@ -11,6 +12,21 @@ class DriversController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(){
+        //restrict to only loged in Users.
+        $this->middleware('auth');
+    }
+
+
+    public function available(){
+        $_ = new driverReequests;
+        $available = $_->available();
+
+        return view('drivers_available')
+            ->with('available', $available);
+    }
+
     public function index()
     {
         //

@@ -44,7 +44,7 @@
             </div>
             
             </div>
-            <div class="d-flex flex-row mt-4 mb-4">
+            
                 @csrf
                 <a href="{{ url('/groups') }}" class="btn btn-danger text-white component-flat w-50 mr-2" type="button">Delete</a>
 

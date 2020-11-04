@@ -70,6 +70,14 @@
 
             @break
         @case('farmer')
+
+        <li>
+          <a href="{{ url('/divers/available') }}">
+            <span class="link-title">Drivers</span>
+            <i class="mdi mdi-gauge link-icon"></i>
+          </a>
+        </li>
+
         <li>
           <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
             <span class="link-title">Groups</span>

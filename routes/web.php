@@ -30,6 +30,7 @@ Route::post('/complete_reg', 'HomeController@complete_reg');
 Route::resource('/groups', 'GroupsController'); 
 Route::resource('/cars', 'CarsController'); 
 Route::post('/join', 'HomeController@join');
+Route::get('/divers/available', 'DriversController@available')->name('available');
 
 Route::resource('/trips', 'TripsController');
 
