@@ -31,6 +31,8 @@ Route::resource('/groups', 'GroupsController');
 Route::resource('/cars', 'CarsController'); 
 Route::post('/join', 'HomeController@join');
 Route::get('/divers/available', 'DriversController@available')->name('available');
+Route::post('/divers/hire', 'DriversController@hire')->name('hire');
+Route::post('/divers/request', 'DriversController@request')->name('request');
 
 Route::resource('/trips', 'TripsController');
 

@@ -1,0 +1,42 @@
+@extends('layouts.app')  
+@section('content')
+<div class="row">
+    <div class="col-12 py-5">
+        <h4>Hire Driver {{ $driver->status }} </h4>
+        <p class="text-gray"><b>Driver Name:</b> {{ $driver->name }}</p>
+        <p class="text-gray"><b>Email:</b> {{ $driver->email }}</p>
+    </div>
+</div>    
+
+
+<div class="row">
+    <div class="col-lg-6 equel-grid">
+        <div class="grid">
+            <p class="grid-header">
+                <span>
+                  <b> Attach Note</b>
+                </span>
+            </p>
+        <div class="grid-body">
+        <div class="item-wrapper">
+            
+            <form action="{{ url('/drivers/request') }}" method="POST">
+                @csrf
+            <div class="form-group">
+                <label for="group_name">suggested Price </label>
+                <input required type="text" placeholder="Suggest Price" name="price" class="form-control">
+
+                <label for="group_name">Destination</label>
+                <input required type="text" placeholder="Destination" name="Destination" class="form-control">
+                
+                <label for="group_name"> Message </label>
+                <textarea required name="note" id="note" cols="30" rows="10" class="form-control" placeholder="Hire Note"></textarea>
+            </div>
+                <button type="submit" class="btn btn-sm btn-success">submit</button>
+            </form>
+            
+        </div>
+        </div>
+    </div>
+</div>
+@endsection

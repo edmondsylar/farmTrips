@@ -15,7 +15,7 @@
                     <tr class="solid-header">
                       <th colspan="2" class="pl-4">Driver</th>
                       <th>Status</th>
-                      <th>Trips</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -42,7 +42,16 @@
                             @endif
                         </small>
                       </td>
-                      <td>12</td>
+                      <td>
+                        @if ($driver->available == '')
+                          <form action="{{ url('/divers/hire') }}" method="post">
+                            @csrf
+                            <input type="hidden" value="{{ Auth::user()->email }}" name="farmer">
+                            <input type="hidden" value="{{ $driver->email }}" name="driver">
+                            <button type="submit" class="btn btn-success btn-xs">Hire</button>
+                          </form>
+                        @endif
+                      </td>
                     </tr>
                     @endforeach
                   </tbody>

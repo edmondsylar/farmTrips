@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\driverReequests;
+use App\driverTrips;
+use App\User;
 
 class DriversController extends Controller
 {
@@ -25,6 +27,26 @@ class DriversController extends Controller
 
         return view('drivers_available')
             ->with('available', $available);
+    }
+
+    public function hire(Request $request){
+        $dr = $request->input('driver');
+        $farmer = $request->input('farmer');
+
+        $dr_responser = User::where('email', $dr)->get();
+        $driver = $dr_responser[0];
+        
+        return view('hire')
+            ->with('driver', $driver);
+    }
+
+    public function request(Request $request){
+        $req = new driverReequests;
+        $req->price = $request->input('price');
+        $req->Destination = $request->input('Destination');
+        $req->note = $request->input('note');
+        
+        return back();
     }
 
     public function index()
