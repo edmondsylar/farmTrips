@@ -14,7 +14,7 @@
         <div class="grid">
             <p class="grid-header">
                 <span>
-                  <b> Attach Note</b>
+                  <b> Add Details</b>
                 </span>
             </p>
         <div class="grid-body">
@@ -23,6 +23,14 @@
             <form action="{{ url('/drivers/request') }}" method="POST">
                 @csrf
             <div class="form-group">
+                <label for="group_name">suggested Group </label>
+                <select name="group" id="" class="form-control" name="group">
+                    <option value="" selected disabled>Select Group</option>
+                    @foreach ($groups as $group)
+                        <option value="{{ $group->id }}">{{ $group->group_name }}</option>
+                    @endforeach
+                </select>
+                
                 <label for="group_name">suggested Price </label>
                 <input required type="text" placeholder="Suggest Price" name="price" class="form-control">
 

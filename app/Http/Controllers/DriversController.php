@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\driverReequests;
 use App\driverTrips;
 use App\User;
+use App\Group;
+use Exception;
+use Mockery\Undefined;
 
 class DriversController extends Controller
 {
@@ -32,11 +35,20 @@ class DriversController extends Controller
     public function hire(Request $request){
         $dr = $request->input('driver');
         $farmer = $request->input('farmer');
+        $groups = Group::where('admin', $farmer)->get();
 
         $dr_responser = User::where('email', $dr)->get();
         $driver = $dr_responser[0];
-        
+
+        try{
+            $grps = $groups[0];
+        }catch (Exception $e){
+            $grps = [];
+            // return print_r([$groups, $grps]);
+        }
+
         return view('hire')
+        ->with('groups', $grps)
             ->with('driver', $driver);
     }
 
@@ -45,6 +57,11 @@ class DriversController extends Controller
         $req->price = $request->input('price');
         $req->Destination = $request->input('Destination');
         $req->note = $request->input('note');
+        $req->group = $request->input('group');
+
+        if ($req->save()){
+            return view('home');
+        }
         
         return back();
     }
