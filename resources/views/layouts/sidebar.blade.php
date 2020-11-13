@@ -23,7 +23,7 @@
     @php
         $role = Auth::user()->role;
     @endphp
-        
+
     <li>
       <a href="{{ url('/') }}">
         <span class="link-title">Dashboard</span>
@@ -43,12 +43,12 @@
                     <a href="{{ url('/trip/progress') }}">In Progress</a>
                   </li>
                   <li>
-                    <a href="{{ url('/trip/requests') }}">Requests</a>
+                    <a href="{{ url('/divers_request') }}">Requests</a>
                   </li>
                   <li>
                     <a href="{{ url('/trip/history') }}">History</a>
                   </li>
-                
+
               </ul>
             </li>
 
@@ -64,7 +64,7 @@
                 <li>
                 <a href="{{ url('/trips') }}">Trips</a>
                 </li>
-                
+
               </ul>
             </li>
 
@@ -90,10 +90,10 @@
             <li>
             <a href="{{ url('/groups') }}">All Groups</a>
             </li>
-            
+
           </ul>
         </li>
-    
+
         <li>
           <a href="#sample-cars" data-toggle="collapse" aria-expanded="false">
             <span class="link-title">Cars</span>
@@ -106,12 +106,12 @@
             <li>
             <a href="{{ url('/trips') }}">Trips</a>
             </li>
-            
+
           </ul>
         </li>
             @break
         @default
-            
+
     @endswitch
 
     {{-- <li>
@@ -130,7 +130,7 @@
           <a href="pages/ui-components/typography.html">Typography</a>
         </li>
       </ul>
-    </li> 
+    </li>
     <li>
       <a href="{{ url('#') }}">
         <span class="link-title">My Account</span>

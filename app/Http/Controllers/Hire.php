@@ -4,68 +4,17 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
-use App\driverReequests;
-use App\driverTrips;
 use App\User;
 use App\Group;
-use Exception;
-use Mockery\Undefined;
+use App\driverReequests;
 
-class DriversController extends Controller
+class Hire extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct(){
-        //restrict to only loged in Users.
-        $this->middleware('auth');
-    }
-
-
-    public function available(){
-        $_ = new driverReequests;
-        $available = $_->available();
-
-        return view('drivers_available')
-            ->with('available', $available);
-    }
-
-    public function hire(Request $request){
-
-        $dr = $request->input('driver');
-        $farmer = $request->input('farmer');
-        $groups = Group::where('admin', $farmer)->get();
-
-        $dr_responser = User::where('email', $dr)->get();
-        $driver = $dr_responser[0];
-
-        return $groups;
-        try{
-            $grps = $groups[0];
-        }catch (Exception $e){
-            $grps = [];
-            // return print_r([$groups, $grps]);
-        }
-
-        return view('hire')
-            ->with('groups', $grps)
-            ->with('driver', $driver);
-    }
-
-    public function request(){
-        // $r = new driverReequests;
-        $userID = Auth::user()->id;
-        $requests = driverReequests::orderBy('created_at', 'desc')
-            ->where('driver', Auth::user()->email)
-            ->paginate(5);
-
-        return view('requests')
-            ->with('requests', $requests);
-    }
-
     public function index()
     {
         //
@@ -90,6 +39,20 @@ class DriversController extends Controller
     public function store(Request $request)
     {
         //
+        $d = new driverReequests;
+        $d->driver = $request->input('driver');
+        $d->farmer = Auth::user()->email;
+        $d->note = $request->input('note');
+        $d->group = $request->input('group');
+        $d->destination = $request->input('destination');
+        $d->price = $request->input('price');
+        if ($d->save()){
+            return redirect('/divers/available')
+                ->with('success', 'Request Sent');
+        }
+
+        return back()
+                ->with('error', 'Something went wrong');
     }
 
     /**
@@ -101,6 +64,15 @@ class DriversController extends Controller
     public function show($id)
     {
         //
+        $driver = User::find($id);
+        $groups = Group::orderBy('created_at', 'desc')
+            ->where('admin', Auth::user()->email)
+            ->paginate(5);
+
+        // return $groups;
+        return view('hire')
+            ->with('driver', $driver)
+            ->with('groups', $groups);
     }
 
     /**

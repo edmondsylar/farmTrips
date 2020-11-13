@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
     @if (count($available) <= 0)
-    
-    @else 
-        
+
+    @else
+
         <div class="col-md-8 equel-grid">
             <div class="grid">
               <div class="grid-body py-3">
@@ -44,12 +44,9 @@
                       </td>
                       <td>
                         @if ($driver->available == '')
-                          <form action="{{ url('/divers/hire') }}" method="post">
-                            @csrf
-                            <input type="hidden" value="{{ Auth::user()->email }}" name="farmer">
-                            <input type="hidden" value="{{ $driver->email }}" name="driver">
+                        <a href="{{ url('/hire/'.$driver->id) }}">
                             <button type="submit" class="btn btn-success btn-xs">Hire</button>
-                          </form>
+                        </a>
                         @endif
                       </td>
                     </tr>
@@ -59,7 +56,7 @@
               </div>
             </div>
           </div>
-        
+
     @endif
 
 @endsection
