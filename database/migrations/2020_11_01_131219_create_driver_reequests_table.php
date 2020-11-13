@@ -15,6 +15,15 @@ class CreateDriverReequestsTable extends Migration
     {
         Schema::create('driver_reequests', function (Blueprint $table) {
             $table->id();
+            $table->string('driver');
+            $table->string('farmer');
+            $table->string('car')->nullable();
+            $table->string('note')->nullable();
+            $table->string('group');
+            $table->string('price');
+            $table->string('status')->default('New');
+            $table->string('Destination')->nullable();
+            
             $table->timestamps();
         });
     }

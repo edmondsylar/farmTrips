@@ -27,15 +27,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/roles', 'HomeController@roles')->name('roles');
 Route::get('/m_groups', 'HomeController@m_groups')->name('m_groups');
 Route::post('/complete_reg', 'HomeController@complete_reg');
-Route::resource('/groups', 'GroupsController'); 
-Route::resource('/cars', 'CarsController'); 
+Route::resource('/groups', 'GroupsController');
+Route::resource('/cars', 'CarsController');
 Route::post('/join', 'HomeController@join');
+Route::get('/divers/available', 'DriversController@available')->name('available');
+Route::post('/divers/hire/{$driver}', 'DriversController@hire')->name('hire');
+Route::get('/divers_request', 'DriversController@request')->name('request');
+
+Route::resource('/hire', 'hire');
 
 Route::resource('/trips', 'TripsController');
 
 //Joining a group View
 Route::get('/join_group/{id}', function($id){
-    
+
     if(!Auth::user()){
         return view('auth.login');
     }
@@ -52,4 +57,12 @@ Route::get('/create_group', function () {
     $create = '';
     return view('m_groups')
     ->with('create', $create);
+});
+
+use App\driverReequests;
+Route::get('/accept/{$req}', function($req){
+
+    return $req;
+    return back()
+        ->with('success', 'Trip Accepted');
 });

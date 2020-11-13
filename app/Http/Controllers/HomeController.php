@@ -72,6 +72,17 @@ class HomeController extends Controller
     public function complete_reg(Request $request){
 
         $user = Auth::user()->email;
+        if ($request->input('role') == 'driver'){
+
+            User::where('email', $user)->update([
+                'role'=> $request->input('role'),
+                'trips'=> 0,
+                'status'=>'available',
+            ]);
+
+            return redirect('/');
+        }
+
         User::where('email', $user)->update(['role'=> $request->input('role')]);
         // Auth::user()->role = $request->input('role');
 
