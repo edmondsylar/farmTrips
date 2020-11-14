@@ -78,8 +78,10 @@ class TripsController extends Controller
         //
         // get the reques
         $req = driverReequests::find($id);
+        $group = Group::find($req->group);
 
         return view('trips')
+            ->with('group', $group)
             ->with('request', $req);
     }
 

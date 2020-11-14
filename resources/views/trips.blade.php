@@ -12,15 +12,18 @@
             <div class="grid">
                 <div class="grid-body text-gray">
                     <div class="d-flex justify-content-between">
-                        <p> Destination {{ $request->Destination }} </p>
+                        <p> Destination {{ $group->group_name }} </p>
                         <span class="badge badge-success"></span>
                     </div>
-                <p class="text-black">Group Name : {{ $request->group }} </p>
+                        <p class="text-black">Pick up : {{ $group->group_name }} </p>
+                        <p class="text-black">Destination : {{ $group->destination }} </p>
                     <div class="wrapper w-50 mt-4">
                         
-
-                        <a href="{{ url('/trip_start'.$request->id) }}" class="btn btn-xs btn-inverse-success"> Start</a>
-                        <a href="{{ url('/trip_start'.$request->id) }}" class="btn btn-xs btn-inverse-success"> Stop</a>
+                        <p>
+                            {{ $request->Description }}
+                        </p>
+                        <a href="{{ url('/trip_start/'.$request->id) }}" class="btn btn-xs btn-inverse-success"> Start</a>
+                        <a href="{{ url('/trip_start/'.$request->id) }}" class="btn btn-xs btn-inverse-success"> Stop</a>
 
                     </div>
                 </div>
