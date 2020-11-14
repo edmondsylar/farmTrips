@@ -43,7 +43,7 @@
                         </small>
                       </td>
                       <td>
-                        @if ($driver->status != 'available')
+                        @if ($driver->status == 'available')
                         <a href="{{ url('/hire/'.$driver->id) }}">
                             <button type="submit" class="btn btn-success btn-xs">Hire</button>
                         </a>
