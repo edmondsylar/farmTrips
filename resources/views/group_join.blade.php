@@ -106,26 +106,13 @@
             </span>
             </div>
             <div class="d-flex align-items-end mt-2">
-            <h3>Start Trip</h3>
+            <h3>Trip Status</h3>
             <p class="ml-1 font-weight-bold"></p>
             </div>
             
             <div class="d-flex flex-row mt-4 mb-4">
-                {{-- we place a form here --}}
-                <form action="/trips" method="post" class="form-group">
-                    @csrf
-                    <div class="row">
-                        <input type="hidden" name="group" id="group" value="{{ $group->id }}">
-                        <input type="hidden" name="destination" id="destination" value="{{ $group->destination }}">
-                        <input type="hidden" name="car" id="car" value="{{ $group->car }}">
-                        <label for="note">Enter Note</label> 
-                        <textarea name="" id="" cols="30" placeholder="Optional Trip Notes" rows="10" class="form-control"></textarea>
-                    </div>
-               
+                Trip starts
                 
-            </div>
-            <div class="d-flex justify-content-between pt-2">
-                <button class="btn btn-success w-50 ml-2" type="button">Start Strip</button>
             </div>
         </form>
 

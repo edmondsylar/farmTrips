@@ -35,7 +35,7 @@
                       </td>
                       <td>
                         <small>
-                            @if ($driver->status =='unavailable')
+                            @if ($driver->status !='available')
                                 <div class="badge badge-danger">unavailable</div>
                             @else
                                 <div class="badge badge-success">{{ $driver->status }}</div>

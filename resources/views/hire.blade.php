@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
     <div class="col-12 py-5">
-        <h4>Hire Driver {{ $driver->status }} </h4>
+        <h4>Hire Driver</h4>
         <p class="text-gray"><b>Driver Name:</b> {{ $driver->name }}</p>
         <p class="text-gray"><b>Email:</b> {{ $driver->email }}</p>
     </div>
