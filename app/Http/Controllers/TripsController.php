@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\userGroups;
 use App\Trips;
+use App\driverReequests;
 
 class TripsController extends Controller
 {
@@ -74,13 +75,12 @@ class TripsController extends Controller
 use App\driverReequests;
 use App\Group;
 use App\Trips;
-use App\driverTripss;
 
     public function show($id)
     {
         //
         // get the reques
-        $req = driverReeqsuests::find($id);
+        $req = driverReequests::find($id);
         return $req;
 
         return view('trips');
