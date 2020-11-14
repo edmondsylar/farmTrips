@@ -50,7 +50,7 @@ class ResponseController extends Controller
     {
         $req = driverReequests::find($id);
         //update the driver status
-        User::where('driver', Auth::user()->email)
+        User::where('email', Auth::user()->email)
             ->update(['status'=>'onTrip']);
         
         //update request status.
