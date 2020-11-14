@@ -72,9 +72,6 @@ class TripsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-use App\driverReequests;
-use App\Group;
-use App\Trips;
 
     public function show($id)
     {
