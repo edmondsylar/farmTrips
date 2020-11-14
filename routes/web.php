@@ -58,11 +58,4 @@ Route::get('/create_group', function () {
     return view('m_groups')
     ->with('create', $create);
 });
-
-use App\driverReequests;
-Route::get('/accept/{$req}', function($req){
-
-    return $req;
-    return back()
-        ->with('success', 'Trip Accepted');
-});
+Route::resource('/response', 'ResponseController');

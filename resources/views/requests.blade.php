@@ -16,12 +16,12 @@
 
             @foreach ($requests as $request)
                 <div class="activity-log">
-                    <p class="log-name">{{ $request->Destination }} | price {{ $request->price }} shs</p><br>{{ $request->pickup }}
+                    <p class="log-name">{{ $request->Destination }} | price {{ $request->price }} shs Pickup: {{ $request->pickup }}</p>
                     <div class="log-details"> {{ $request->note }}
                         <br><br>
                         Group: {{ $request->group }}
                         <div class="wrapper mt-2">
-                            <a href="{{ url('/accept/'.$request->id) }}">
+                            <a href="{{ url('/response/'.$request->id) }}">
                                 <button type="button" class="btn btn-xs btn-success">Approve</button>
                             </a>
                             <button type="button" class="btn btn-xs btn-inverse-danger">Reject</button>
