@@ -21,10 +21,17 @@
                         <br><br>
                         Group: {{ $request->group }}
                         <div class="wrapper mt-2">
+                          @if ($request->status = "New")
                             <a href="{{ url('/response/'.$request->id) }}">
                                 <button type="button" class="btn btn-xs btn-success">Approve</button>
                             </a>
                             <button type="button" class="btn btn-xs btn-inverse-danger">Reject</button>
+
+                          @else
+                            <button type="button" disbled class="btn btn-xs btn-inverse-primary">{{ $request->status }}</button>
+                          @endif
+
+                            
                         </div>
                     </div>
                     <small class="log-time">{{ $request->created_at }}</small>
