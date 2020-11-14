@@ -59,3 +59,24 @@ Route::get('/create_group', function () {
     ->with('create', $create);
 });
 Route::resource('/response', 'ResponseController');
+
+
+use App\driverReequests;
+
+Route::get('/trip_start/{$id}', function($id){
+        
+    driverReequests::where('id', $id)
+        ->update(['status'=>'started']);
+
+
+    return back();
+});
+
+Route::get('/trip_stop/{$id}', function($id){
+        
+    driverReequests::where('id', $id)
+        ->update(['status'=>'stoped']);
+
+    return back();
+});
+

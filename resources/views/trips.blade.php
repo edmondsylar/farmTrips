@@ -19,13 +19,8 @@
                     <div class="wrapper w-50 mt-4">
                         
 
-                        <button class="btn btn-xs btn-inverse-primary">
-                            Start
-                        </button>
-
-                        <button class="btn btn-xs btn-inverse-stop">
-                            Stop
-                        </button>
+                        <a href="{{ url('/trip_start'.$request->id) }}" class="btn btn-xs btn-inverse-success"> Start</a>
+                        <a href="{{ url('/trip_start'.$request->id) }}" class="btn btn-xs btn-inverse-success"> Stop</a>
 
                     </div>
                 </div>
