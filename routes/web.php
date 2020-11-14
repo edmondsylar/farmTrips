@@ -72,11 +72,6 @@ Route::get('/trip_start/{$id}', function($id){
     return back();
 });
 
-Route::get('/trip_stop/{$id}', function($id){
-        
-    driverReequests::where('id', $id)
-        ->update(['status'=>'stopped']);
+Route::resource('/proc', 'Proc');
 
-    return back();
-});
 

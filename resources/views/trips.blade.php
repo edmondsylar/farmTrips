@@ -22,8 +22,8 @@
                         <p>
                             {{ $request->Description }}
                         </p>
-                        <a href="{{ url('/trip_start/'.$request->id) }}" class="btn btn-xs btn-inverse-success"> Start</a>
-                        <a href="{{ url('/trip_start/'.$request->id) }}" class="btn btn-xs btn-inverse-success"> Stop</a>
+                        <a href="{{ url('/proc/'.$request->id) }}" class="btn btn-xs btn-inverse-success"> Start</a>
+                        {{-- <a href="{{ url('/trip_stop/'.$request->id) }}" class="btn btn-xs btn-inverse-success"> Stop</a> --}}
 
                     </div>
                 </div>
