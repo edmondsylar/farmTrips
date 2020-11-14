@@ -78,9 +78,9 @@ class TripsController extends Controller
         //
         // get the reques
         $req = driverReequests::find($id);
-        return $req;
 
-        return view('trips');
+        return view('trips')
+            ->with('request', $req);
     }
 
     /**
