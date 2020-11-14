@@ -31,10 +31,10 @@ Route::resource('/groups', 'GroupsController');
 Route::resource('/cars', 'CarsController');
 Route::post('/join', 'HomeController@join');
 Route::get('/divers/available', 'DriversController@available')->name('available');
-Route::post('/divers/hire/{$driver}', 'DriversController@hire')->name('hire');
+// Route::post('/divers/hire/{$driver}', 'DriversController@hire')->name('hire');
 Route::get('/divers_request', 'DriversController@request')->name('request');
 
-Route::resource('/hire', 'hire');
+Route::resource('/hire', 'Hire');
 
 Route::resource('/trips', 'TripsController');
 
