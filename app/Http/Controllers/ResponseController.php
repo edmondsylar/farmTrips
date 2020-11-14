@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
+use App\driverReequests;
 
 class ResponseController extends Controller
 {
@@ -45,7 +47,22 @@ class ResponseController extends Controller
      */
     public function show($id)
     {
-        //
+        $req = driverReequests::find($id);
+        //update the driver status
+        User::where('driver', Auth::user()->email)
+            ->update(['status'=>'onTrip']);
+        
+        //update request status.
+        driverReequests::where('id', $id)
+            ->update(['status'=>'accepted']);
+
+        Group::where('id', $req->group)
+            ->update(['status'=>'closed']);
+
+        return back()
+            ->with('success', 'Accepted trip');    
+
+        return view('response');
     }
 
     /**
