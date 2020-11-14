@@ -46,8 +46,9 @@ class Hire extends Controller
         $d->group = $request->input('group');
         $d->destination = $request->input('destination');
         $d->price = $request->input('price');
+        
         if ($d->save()){
-            
+
             return redirect('/divers/available')
                 ->with('success', 'Request Sent');
         }

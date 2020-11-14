@@ -48,7 +48,7 @@
 
                 <label for="group_name">suggested Price </label>
                 <input required type="text" placeholder="Suggest Price" name="price" class="form-control">
-                <input type="hidden" name="driver" value="{{ $driver->id }}">
+                <input type="hidden" name="driver" value="{{ $driver->email }}">
 
                 <label for="group_name">Destination</label>
                 <input required type="text" placeholder="Destination" name="Destination" class="form-control">
