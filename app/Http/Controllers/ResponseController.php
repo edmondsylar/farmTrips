@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\driverReequests;
 use App\User;
+use App\Group;
 
 class ResponseController extends Controller
 {
