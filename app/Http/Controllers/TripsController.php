@@ -74,6 +74,8 @@ class TripsController extends Controller
     public function show($id)
     {
         //
+        return $id;
+        return view('trips');
     }
 
     /**

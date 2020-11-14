@@ -28,7 +28,10 @@
                             <button type="button" class="btn btn-xs btn-inverse-danger">Reject</button>
 
                           @else
-                            <button type="button" disbled class="btn btn-xs btn-inverse-primary">{{ $request->status }}</button>
+                            <button type="button" disbled class="btn btn-xs btn-inverse-primary disabled">{{ $request->status }}</button>
+                            <a href="{{ url('/trips/'.$request->id) }}">
+                              <button type="button"class="btn btn-xs btn-inverse-primary">Trips</button>
+                            </a>
                           @endif
 
                             
