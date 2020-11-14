@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    @if (count($available) <= 0)
-
+    @if (count($available) == 0)
+      No Available drivers
     @else
 
         <div class="col-md-8 equel-grid">
