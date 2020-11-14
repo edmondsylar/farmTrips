@@ -35,10 +35,10 @@
                       </td>
                       <td>
                         <small>
-                            @if ($driver->status =='')
+                            @if ($driver->status =='unavailable')
                                 <div class="badge badge-danger">unavailable</div>
                             @else
-                                <div class="badge badge-success">{{ $driver->available }}</div>
+                                <div class="badge badge-success">{{ $driver->status }}</div>
                             @endif
                         </small>
                       </td>
