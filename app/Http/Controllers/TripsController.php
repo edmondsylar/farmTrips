@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\userGroups;
 use App\Trips;
 use App\driverReequests;
+use App\Group;
 
 class TripsController extends Controller
 {
