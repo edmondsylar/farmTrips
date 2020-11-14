@@ -27,7 +27,7 @@
                       <td class="pl-md-0">
                         <small class="text-black font-weight-medium d-block">
                             <a href="{{ url('/divers/available?driver=this') }}" class="border-top px-3 py-2 d-block text-gray" href="#">
-                               {{ $driver->name }}
+                               {{ $driver->name }} {{ $driver->status }}
                             </a>
                         </small>
                         <span class="text-gray">
