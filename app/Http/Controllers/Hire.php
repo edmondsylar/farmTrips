@@ -47,6 +47,11 @@ class Hire extends Controller
         $d->destination = $request->input('destination');
         $d->price = $request->input('price');
         if ($d->save()){
+
+            User::where('email', $request->input('driver'))
+                ->update(['status'=>'available']);
+
+
             return redirect('/divers/available')
                 ->with('success', 'Request Sent');
         }
