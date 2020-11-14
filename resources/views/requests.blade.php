@@ -16,7 +16,7 @@
 
             @foreach ($requests as $request)
                 <div class="activity-log">
-                    <p class="log-name">{{ 'Destination' }} | price {{ $request->price }} shs</p>
+                    <p class="log-name">{{ $request->Destination }} | price {{ $request->price }} shs</p><br>{{ $driver->pickup }}
                     <div class="log-details"> {{ $request->note }}
                         <br><br>
                         Group: {{ $request->group }}
