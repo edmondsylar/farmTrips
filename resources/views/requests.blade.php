@@ -21,7 +21,7 @@
                         <br><br>
                         Group: {{ $request->group }}
                         <div class="wrapper mt-2">
-                          @if ($request->status = "New")
+                          @if ($request->status == "New")
                             <a href="{{ url('/response/'.$request->id) }}">
                                 <button type="button" class="btn btn-xs btn-success">Approve</button>
                             </a>
