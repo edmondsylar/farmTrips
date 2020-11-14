@@ -71,10 +71,18 @@ class TripsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+use App\driverReequests;
+use App\Group;
+use App\Trips;
+use App\driverTripss;
+
     public function show($id)
     {
         //
-        // return $id;
+        // get the reques
+        $req = driverReeqsuests::find($id);
+        return $req;
+
         return view('trips');
     }
 
