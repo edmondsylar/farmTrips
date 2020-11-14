@@ -24,6 +24,7 @@ class driverReequests extends Model
     public function available(){
         $available = user::where([
             'role'=> 'driver',
+            'status'=>'available'
             // 'status'=>'available'
         ])
         ->paginate(10);
