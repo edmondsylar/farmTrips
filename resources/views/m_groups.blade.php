@@ -34,17 +34,6 @@
                 <input type="text" placeholder="Destination" name="destination" class="form-control">
 
                 <label for="group_name"> Car </label>
-                <select name="car" class="form-control" id="">
-                  <option value="" disabled selected>Select Car</option>
-                  @if(count($cars) > 0)
-                    @foreach($cars as $car)
-                      <option value="{{ $car->number_plate }}"> {{ $car->number_plate. " ". $car->type  }} </option>
-                    @endforeach
-                  @else
-                    <option value="" disabled>You have no Cars yet</option>
-                  @endif
-                </select>
-
             </div>
                 <button type="submit" class="btn btn-sm btn-primary">Create</button>
             </form>

@@ -47,8 +47,25 @@ class Proc extends Controller
     public function show($id)
     {
         //
-        driverReequests::where('id', $id)
-            ->update(['status'=>'started']);
+        $g = driverReequests::find($id);
+
+        switch ($g->status) {
+            case 'accepted':
+                driverReequests::where('id', $id)
+                    ->update(['status'=>'started']);
+                break;
+            
+            case 'started':
+                    driverReequests::where('id', $id)
+                        ->update(['status'=>'stopped']);
+                    break;
+                
+            default:
+                return back();
+                break;
+        }
+
+        
         
         return back();
     }
