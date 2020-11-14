@@ -52,6 +52,9 @@
 
                 <label for="group_name">Destination</label>
                 <input required type="text" placeholder="Destination" name="Destination" class="form-control">
+                
+                <label far="pickup">Pick up</label>
+                <input type="text" placeholder="pickup" name="pickup" class="form-control">
 
                 <label for="group_name"> Message </label>
                 <textarea required name="note" id="note" cols="30" rows="10" class="form-control" placeholder="Deliver Instructions"></textarea>

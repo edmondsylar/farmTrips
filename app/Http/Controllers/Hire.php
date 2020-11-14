@@ -44,6 +44,7 @@ class Hire extends Controller
         $d->farmer = Auth::user()->email;
         $d->note = $request->input('note');
         $d->group = $request->input('group');
+        $d->pickup = $request->input('pickup');
         $d->destination = $request->input('destination');
         $d->price = $request->input('price');
         

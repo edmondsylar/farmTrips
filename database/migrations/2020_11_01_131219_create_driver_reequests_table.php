@@ -19,6 +19,7 @@ class CreateDriverReequestsTable extends Migration
             $table->string('farmer');
             $table->string('car')->nullable();
             $table->string('note')->nullable();
+            $table->string('pickup');
             $table->string('group');
             $table->string('price');
             $table->string('status')->default('New');
