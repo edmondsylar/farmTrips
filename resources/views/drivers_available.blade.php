@@ -27,7 +27,7 @@
                       <td class="pl-md-0">
                         <small class="text-black font-weight-medium d-block">
                             <a href="{{ url('/divers/available?driver=this') }}" class="border-top px-3 py-2 d-block text-gray" href="#">
-                               {{ $driver->name }} {{ $driver->status }}
+                               {{ $driver->name }}
                             </a>
                         </small>
                         <span class="text-gray">
@@ -35,7 +35,7 @@
                       </td>
                       <td>
                         <small>
-                            @if ($driver->available =='')
+                            @if ($driver->status =='')
                                 <div class="badge badge-danger">unavailable</div>
                             @else
                                 <div class="badge badge-success">{{ $driver->available }}</div>
