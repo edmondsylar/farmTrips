@@ -33,7 +33,6 @@
                 <label for="group_name"> Destination </label>
                 <input type="text" placeholder="Destination" name="destination" class="form-control">
 
-                <label for="group_name"> Car </label>
             </div>
                 <button type="submit" class="btn btn-sm btn-primary">Create</button>
             </form>
