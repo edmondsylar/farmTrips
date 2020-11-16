@@ -1,6 +1,6 @@
 @php
     use App\driverReequests;
-    $requests = driverReequests::where('driver', Auth::user()->email)->get();
+    $requests = driverReequests::where(['driver' => Auth::user()->email, 'status'=>''])->get();
     try {
       $reqs = $request[0];
     } catch (\Throwable $th) {
@@ -66,7 +66,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="col-lg-4 col-md-6 equel-grid">
     <div class="grid table-responsive">
       <table class="table table-stretched">

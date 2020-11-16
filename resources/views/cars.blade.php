@@ -16,14 +16,14 @@
                 <span>
                   <b> Create A car.</b> <br>
                 </span>
-                <small>  
+                <small>
                    Provide car details to be created.
                 </small>
 
             </p>
         <div class="grid-body">
         <div class="item-wrapper">
-            
+
             <form action="{{ url('/cars') }}" method="POST">
                 @csrf
                 <div class="form-group">
@@ -41,58 +41,14 @@
                     <input type="text" name="plate" class="form-control" id="inputPassword1" placeholder="Number Plate">
                 </div>
 
-
                 <button type="submit" class="btn btn-sm btn-primary">Submit</button>
             </form>
-            
         </div>
         </div>
     </div>
 </div>
 
-<div class="col-md-6 equel-grid">
-    <div class="grid">
-      <div class="grid-body">
-        <div class="split-header">
-          <p class="card-title">Cars</p>
-          <div class="btn-group">
-            <button type="button" class="btn btn-trasnparent action-btn btn-xs component-flat pr-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="mdi mdi-dots-vertical"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="{{ url('/groups') }}">All Cars</a>
-              <a class="dropdown-item" href="{{ url('/#') }}">Edit</a>
-            </div>
-          </div>
-        </div>
-        <div class="vertical-timeline-wrapper">
-          <div class="timeline-vertical dashboard-timeline">
-            @if (count($cars) > 0)
-                @foreach ($cars as $item)
-                   <div class="activity-log">
-                        <p class="log-name">
-                        <a href="{{ url('/join_group/'.$item->id) }}">
-                         Created: {{ $item->created_at }}  
-                        </p>
-                        </a>
-                        <div class="log-details" style="font-weight: bolder;">
-                           {{ $item->color .' '. $item->type }}
-                        </div>
-                        <small>
-                            Plate: {{ $item->number_plate }}
-                        </small>
-                        
-                    </div>
-               
-                    @endforeach
-            </div>
-                {{ $cars->links() }}
-            @endif
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 <div class="col-lg-12">
     <div class="grid">
         <p class="grid-header">All cars and Destinations.</p>
@@ -102,19 +58,19 @@
             <thead>
                 <tr>
                 <th>Car</th>
+                <th>Type</th>
                 <th>Number Plate</th>
-                <th>Destination</th>
-                <th>Date</th>
-                <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-success">
-                    <td>Water Bottle</td>
-                    <td>874</td>
-                    <td>$546</td>
-                    <td>43%</td>
-                </tr>
+                @foreach ($cars as $car)
+                    <tr class="bg-success">
+                        <td>{{ $car->id }}</td>
+                        <td>{{ $car->type }}</td>
+                        <td>{{ $car->number_plate }}</td>
+                    </tr>
+                @endforeach
+
             </tbody>
             </table>
         </div>

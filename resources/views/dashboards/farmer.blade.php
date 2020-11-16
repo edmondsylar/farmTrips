@@ -43,11 +43,11 @@
       </div>
     </div>
   </div>
-  
+
   <div class="col-md-8 equel-grid">
     <div class="grid">
       <div class="grid-body py-3">
-              <a style="margin-bottom: 10px;" href="{{ url('/create_group') }}" class="btn btn-xs btn-primary float-right">
+              <a style="margin-bottom: 10px;" href="{{ url('/m_groups') }}" class="btn btn-xs btn-primary float-right">
             <i class="mdi mdi-plus"></i>Create Group</a>
         <p class="card-title ml-n1">Farmer Groups</p>
       </div>
@@ -76,7 +76,7 @@
                         <td>
                             {{ $item->Manager }}
                         </td>
-                        <td> 
+                        <td>
                             {{-- @if (!$item->status)
                                 Open Discusion
                             @else
@@ -119,9 +119,9 @@
               <p class="log-name">System</p>
               <div class="log-details">Completed Registration</div>
               <small class="log-time">8 mins Ago</small>
-            
+
             </div>
-          
+
         </div>
         </div>
       </div>

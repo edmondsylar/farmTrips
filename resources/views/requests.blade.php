@@ -30,11 +30,11 @@
                           @else
                             <button type="button" disbled class="btn btn-xs btn-inverse-primary disabled">{{ $request->status }}</button>
                             <a href="{{ url('/trips/'.$request->id) }}">
-                              <button type="button"class="btn btn-xs btn-inverse-primary">Trips</button>
+                              <button type="button"class="btn btn-xs btn-inverse-primary">Trip Actions</button>
                             </a>
                           @endif
 
-                            
+
                         </div>
                     </div>
                     <small class="log-time">{{ $request->created_at }}</small>

@@ -7,6 +7,8 @@ use App\userGroups;
 use App\Trips;
 use App\driverReequests;
 use App\Group;
+use App\Car;
+use App\User;
 
 class TripsController extends Controller
 {
@@ -19,13 +21,13 @@ class TripsController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         //
         $g = userGroups::where('user', Auth::user()->email)->get();
         $trips = array();
-        
+
         // foreach()
 
         return $g;
@@ -80,9 +82,13 @@ class TripsController extends Controller
         // get the reques
         $req = driverReequests::find($id);
         $group = Group::find($req->group);
+        $cars = Car::orderBy('created_at', 'desc')
+            ->where('owner', Auth::user()->email)
+            ->get();
 
         return view('trips')
             ->with('group', $group)
+            ->with('cars', $cars)
             ->with('request', $req);
     }
 
@@ -121,4 +127,27 @@ class TripsController extends Controller
     {
         //
     }
+
+
+    public function start_trip(Request $request){
+        driverReequests::where("id", $request->input('trip'))
+            ->update(['status'=>'started']);
+
+        return back();
+    }
+
+
+    public function stop_trip(Request $request){
+
+        driverReequests::where("id", $request->input('trip'))
+            ->update(['status'=>'ended']);
+
+        User::where(['email'=>Auth::user()->email])
+            ->update(['status'=>'available']);
+
+        return back();
+    }
+
+
+
 }

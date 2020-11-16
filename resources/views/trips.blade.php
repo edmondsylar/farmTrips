@@ -1,33 +1,60 @@
 @extends('layouts.app')
-
 @section('content')
-    <div class="row">
-        <div class="col-12 py-5">
-            <h4>Group</h4>
+<div class="col-md-12 equel-grid">
+    <div class="grid">
+      <div class="grid-body">
+        <div class="split-header">
+          <p class="card-title"><b>{{ $group->group_name }}</b>  </p>
+          <div class="btn-group">
+            <button type="button" class="btn btn-trasnparent action-btn btn-xs component-flat pr-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="mdi mdi-dots-vertical"></i>
+            </button>
+          </div>
         </div>
-    </div>
+        <div class="vertical-timeline-wrapper">
+          <div class="timeline-vertical dashboard-timeline">
+            <ul>
+                <li>Pick UP: <b>{{ $request->pickup }}</b></li>
+                <li>Destination:<b> {{ $group->destination }}</b></li>
+                <li>Price: <b> {{ $request->price }} </b></li>
+            </ul>
+            @if ($request->status == 'accepted')
 
-    <div class="row">
-        <div class="col-md-3 col-sm-6 col-6 equel-grid">
-            <div class="grid">
-                <div class="grid-body text-gray">
-                    <div class="d-flex justify-content-between">
-                        <p> Destination {{ $group->group_name }} </p>
-                        <span class="badge badge-success"></span>
+                <form action="{{ url('/start') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="group_name">Select Car</label>
+                        <input type="hidden" name="trip" value="{{ $request->id }}">
+                        <select required name="car" id="" class="form-control">
+                            <option value="" disabled selected>Select car</option>
+                            @foreach ($cars as $car)
+                                <option value="{{ $car->id }}"> {{ $car->type." | ".$car->number_plate }} </option>
+                            @endforeach
+                        </select>
                     </div>
-                        <p class="text-black">Pick up : {{ $group->group_name }} </p>
-                        <p class="text-black">Destination : {{ $group->destination }} </p>
-                    <div class="wrapper w-50 mt-4">
-                        
-                        <p>
-                            {{ $request->Description }}
-                        </p>
-                        <a href="{{ url('/proc/'.$request->id) }}" class="btn btn-xs btn-inverse-success"> Start</a>
-                        {{-- <a href="{{ url('/trip_stop/'.$request->id) }}" class="btn btn-xs btn-inverse-success"> Stop</a> --}}
+                    <input class="btn btn-primary btn-xs" type="submit" value="Start Trip">
+                </form>
+            @else
+                @if ($request->status == 'started')
+                    <form action="{{ url('/stop') }}" method="POSt">
+                        @csrf
+                        <input name="trip" type="hidden" value="{{ $request->id }}">
+                        <input class="btn btn-danger btn-xs" type="submit" value="End Trip">
+                    </form>
 
-                    </div>
-                </div>
-            </div>
+                    @else
+                        <input class="btn btn-secondary btn-xs" disabled type="submit" value="{{ $request->status }}">
+                @endif
+
+
+            @endif
+
+
+
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+
 @endsection

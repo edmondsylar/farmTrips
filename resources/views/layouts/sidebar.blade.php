@@ -39,15 +39,15 @@
                 <i class="mdi mdi-flask link-icon"></i>
               </a>
                 <ul class="collapse navigation-submenu" id="sample-pages">
-                  <li>
+                  {{-- <li>
                     <a href="{{ url('/trip/progress') }}">In Progress</a>
-                  </li>
+                  </li> --}}
                   <li>
                     <a href="{{ url('/divers_request') }}">Requests</a>
                   </li>
-                  <li>
+                  {{-- <li>
                     <a href="{{ url('/trip/history') }}">History</a>
-                  </li>
+                  </li> --}}
 
               </ul>
             </li>
@@ -61,9 +61,9 @@
                 <li>
                 <a href="{{ url('/cars') }}">My Cars</a>
                 </li>
-                <li>
+                {{-- <li>
                 <a href="{{ url('/trips') }}">Trips</a>
-                </li>
+                </li> --}}
 
               </ul>
             </li>
@@ -94,21 +94,6 @@
           </ul>
         </li>
 
-        <li>
-          <a href="#sample-cars" data-toggle="collapse" aria-expanded="false">
-            <span class="link-title">Cars</span>
-            <i class="mdi mdi-car link-icon"></i>
-          </a>
-          <ul class="collapse navigation-submenu" id="sample-cars">
-            <li>
-            <a href="{{ url('/cars') }}">My Cars</a>
-            </li>
-            <li>
-            <a href="{{ url('/trips') }}">Trips</a>
-            </li>
-
-          </ul>
-        </li>
             @break
         @default
 

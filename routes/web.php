@@ -37,6 +37,8 @@ Route::get('/divers_request', 'DriversController@request')->name('request');
 Route::resource('/hire', 'Hire');
 
 Route::resource('/trips', 'TripsController');
+Route::post('/start', 'TripsController@start_trip')->name('start_trip');
+Route::post('/stop', 'TripsController@stop_trip')->name('stop_trip');
 
 //Joining a group View
 Route::get('/join_group/{id}', function($id){
@@ -59,19 +61,3 @@ Route::get('/create_group', function () {
     ->with('create', $create);
 });
 Route::resource('/response', 'ResponseController');
-
-
-use App\driverReequests;
-
-Route::get('/trip_start/{$id}', function($id){
-        
-    driverReequests::where('id', $id)
-        ->update(['status'=>'started']);
-
-
-    return back();
-});
-
-Route::resource('/proc', 'Proc');
-
-
