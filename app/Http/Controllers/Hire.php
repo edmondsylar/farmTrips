@@ -45,9 +45,10 @@ class Hire extends Controller
         $d->note = $request->input('note');
         $d->group = $request->input('group');
         $d->pickup = $request->input('pickup');
+        $d->status = 'requested';
         $d->destination = $request->input('destination');
         $d->price = $request->input('price');
-        
+
         if ($d->save()){
 
             return redirect('/divers/available')

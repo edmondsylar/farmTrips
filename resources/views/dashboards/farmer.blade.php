@@ -97,37 +97,5 @@
       </a>
     </div>
   </div>
-  <div class="col-md-4 equel-grid">
-    <div class="grid">
-      <div class="grid-body">
-        <div class="split-header">
-          <p class="card-title">Activity Log</p>
-          <div class="btn-group">
-            <button type="button" class="btn btn-trasnparent action-btn btn-xs component-flat pr-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="mdi mdi-dots-vertical"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="#">Expand View</a>
-              <a class="dropdown-item" href="#">Edit</a>
-            </div>
-          </div>
-        </div>
-        <div class="vertical-timeline-wrapper">
-          <div class="timeline-vertical dashboard-timeline">
-            {{-- Start of activity  logging--}}
-            <div class="activity-log">
-              <p class="log-name">System</p>
-              <div class="log-details">Completed Registration</div>
-              <small class="log-time">8 mins Ago</small>
 
-            </div>
-
-        </div>
-        </div>
-      </div>
-      <a class="border-top px-3 py-2 d-block text-gray" href="#">
-        <small class="font-weight-medium"><i class="mdi mdi-chevron-down mr-2"></i> View All </small>
-      </a>
-    </div>
-  </div>
 </div>
