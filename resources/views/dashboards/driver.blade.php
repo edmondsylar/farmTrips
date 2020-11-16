@@ -14,31 +14,29 @@
     <div class="grid">
       <div class="grid-body text-gray">
         <div class="d-flex justify-content-between">
-          <p>30%</p>
-          <p>+06.2%</p>
+          <p>Requests</p>
         </div>
-        <p class="text-black">Traffic</p>
+        <p class="text-black">0</p>
         <div class="wrapper w-50 mt-4">
-          <canvas height="45" id="stat-line_1"></canvas>
+          {{-- <canvas height="45" id="stat-line_1"></canvas> --}}
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-3 col-sm-6 col-6 equel-grid">
+<div class="col-md-3 col-sm-6 col-6 equel-grid">
     <div class="grid">
       <div class="grid-body text-gray">
         <div class="d-flex justify-content-between">
-          <p>43%</p>
-          <p>+15.7%</p>
+          <p>Trips</p>
         </div>
         <p class="text-black">Conversion</p>
         <div class="wrapper w-50 mt-4">
-          <canvas height="45" id="stat-line_2"></canvas>
+          {{-- <canvas height="45" id="stat-line_2"></canvas> --}}
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-3 col-sm-6 col-6 equel-grid">
+   {{--  <div class="col-md-3 col-sm-6 col-6 equel-grid">
     <div class="grid">
       <div class="grid-body text-gray">
         <div class="d-flex justify-content-between">
@@ -65,7 +63,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
   <div class="col-lg-4 col-md-6 equel-grid">
     <div class="grid table-responsive">
