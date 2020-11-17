@@ -17,7 +17,21 @@
                     <div class="grid-body text-gray">
                         <div class="d-flex justify-content-between">
                             <p> Destination </p>
-                            <span class="badge badge-success">Available</span>
+                            @switch($item->status)
+                                @case('Open')
+                                    <span class="badge badge-success">{{ $item->status }}</span>
+                                    @break
+                                @case('closed')
+                                    <span class="badge badge-secondary">{{ $item->status }}</span>
+                                    @break
+
+                                  @case('started')
+                                        <span class="badge badge-primary">{{ $item->status }}</span>
+                                    @break
+                                @default
+
+                            @endswitch
+
                         </div>
                         <p class="text-black">{{ $item->group_name }}</p>
                         <div class="wrapper w-50 mt-4">
@@ -34,5 +48,5 @@
         @endforeach
     @endif
 </div>
-    
+
 @endsection

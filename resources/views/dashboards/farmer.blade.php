@@ -69,9 +69,11 @@
                             <img class="profile-img img-sm" src="images/profile/male/image_4.png" alt="profile image">
                         </td>
                         <td class="pl-md-0">
-                            <small class="text-black font-weight-medium d-block">{{ $item->group_name }}</small>
-                            <span class="text-gray">
-                            <span class="status-indicator rounded-indicator small bg-primary"></span>{{ $item->created_at }}</span>
+                            <a href="{{ url('/join_group/'.$item->id) }}">
+                                <small class="text-black font-weight-medium d-block">{{ $item->group_name }}</small>
+                                <span class="text-gray">
+                                <span class="status-indicator rounded-indicator small bg-primary"></span>{{ $item->created_at }}</span>
+                            </a>
                         </td>
                         <td>
                             {{ $item->Manager }}
