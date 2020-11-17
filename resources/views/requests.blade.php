@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="vertical-timeline-wrapper">
-          <div class="timeline-vertical dashboard-timeline">
+          {{-- <div class="timeline-vertical dashboard-timeline"> --}}
 
             @foreach ($requests as $request)
                 <div class="activity-log">
@@ -43,7 +43,7 @@
             @endforeach
 
 
-          </div>
+          {{-- </div> --}}
         </div>
       </div>
       <a class="border-top px-3 py-2 d-block text-gray" href="#">
