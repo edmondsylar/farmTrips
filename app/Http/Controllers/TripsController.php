@@ -149,5 +149,11 @@ class TripsController extends Controller
     }
 
 
+    public function join($id){
+
+
+        return $id;
+    }
+
 
 }

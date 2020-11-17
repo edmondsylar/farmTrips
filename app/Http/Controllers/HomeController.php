@@ -39,7 +39,7 @@ class HomeController extends Controller
         $gps = new Group;
         $myGroups = $gps->getPersonal();
         $groups = $gps->groups();
-         
+
         // return $userGroups;
         return view('home')
             ->with('groups', $groups)
@@ -102,14 +102,14 @@ class HomeController extends Controller
             $_gp = Group::where('id', $value['group'])->get();
             array_push($groups, $_gp);
 
-        }        
+        }
         /**
          * Lets also get cars you have created
          */
         $cars = Car::orderBy('id', 'desc')->where('owner', $user)->get();
 
         //Groups you have created
-        $_ = new Group; 
+        $_ = new Group;
         $_groups = $_->getPersonal();
         return view('m_groups')
             ->with('cars', $cars)
@@ -117,7 +117,7 @@ class HomeController extends Controller
     }
 
     public function join(Request $request){
-        
+
         $create = new userGroups;
         $create->user = Auth::user()->email;
         $create->group = $request->input('group');

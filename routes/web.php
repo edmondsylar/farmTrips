@@ -49,10 +49,25 @@ Route::get('/join_group/{id}', function($id){
 
     $group = Group::find($id);
 
-    // return $group;
     return view('group_join')
         ->with('group', $group);
 });
+
+
+use App\userGroups;
+Route::get('/joining/{id}', function($id){
+
+    if(!Auth::user()){
+        return view('auth.login');
+    }
+    userGroups::create([
+        'group'=>$id,
+        'user' => Auth::user()->name,
+    ]);
+    return back();
+});
+
+
 
 Route::get('/create_group', function () {
 

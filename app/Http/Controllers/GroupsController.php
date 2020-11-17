@@ -20,7 +20,7 @@ class GroupsController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         //
@@ -42,7 +42,7 @@ class GroupsController extends Controller
     public function create()
     {
         //
-        
+
     }
 
     /**
@@ -62,10 +62,9 @@ class GroupsController extends Controller
         $_create->Manager = Auth::user()->name;
         $_create->save();
 
-
-
+        //create group members
         $uGrp = new userGroups;
-        $uGrp->user = Auth::user()->email;
+        $uGrp->user = Auth::user()->name;
         $uGrp->group = $_create->id;
         if ($uGrp->save()){
             return back();
